@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
   buildInputs = [ zlib ] ++ (with llvmPackages_37; [ clang llvm ]);
 
   meta = {
-    description = "A simle `Hi, World!` programm.";
+    description = "A simple `Hi, World!` program.";
     homepage = http://example.com;
     license = stdenv.lib.licenses.mit;
   };
