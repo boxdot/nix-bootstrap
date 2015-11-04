@@ -1,6 +1,6 @@
 dependencies:
   cache_directories:
-    - /nix
+    - ~/nix
   pre:
     - bash ./install-nix.sh
 
