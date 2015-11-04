@@ -1,6 +1,8 @@
 dependencies:
   pre:
     - bash ./scripts/install-nix.sh
+  cache_directories:
+    - "~/nix-1.10-x86_64-linux"
 
 test:
   override:
