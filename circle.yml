@@ -1,9 +1,24 @@
+machine:
+  pre:
+    - make -C $HOME/$CIRCLE_PROJECT_REPONAME configure-nix
+
 dependencies:
   cache_directories:
-    - /nix
+    - "/nix"
+    - "~/.nix-defexpr"
+    - "~/.nix-channels"
+    - "~/.nix-profile"
   pre:
-    - bash ./install-nix.sh
+    - make install-nix
+  override:
+    - make install-deps
 
 test:
   override:
     - make test
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - make deploy  # Configuration of user/host is in Makefile

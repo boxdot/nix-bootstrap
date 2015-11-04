@@ -1,7 +1,33 @@
+
 hi:
 	nix-build packages.nix -A $@
 
 test: hi
-	result/bin/hi ||:
+	# smoke test
+	result/bin/hi
 
-.PHONY: hi test
+deploy: STORE_DIR=$(shell readlink result)
+deploy:
+	nix-copy-closure --to $(DEPLOY_USER)@$(DEPLOY_HOST) $(STORE_DIR)
+	ssh $(DEPLOY_USER)@$(DEPLOY_HOST) "nix-env -i $(STORE_DIR)"
+
+
+# nix related rules
+
+install-deps:
+	# dependencies are cached
+	nix-shell packages.nix -A hi --command true
+
+configure-nix:
+	sudo mkdir -p -m 0755 /nix
+	sudo chown $(USER) /nix
+	echo ". $(HOME)/.nix-profile/etc/profile.d/nix.sh" >> ~/.bashrc
+
+install-nix:
+	# nix will be installed only if it was not restored from cache
+	if [ ! -e /nix -o ! "$$(ls -A /nix)" ]; then \
+		curl https://nixos.org/nix/install | sh; \
+	fi
+
+
+.PHONY: hi test install-deps configure-nix install-nix
