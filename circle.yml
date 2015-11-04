@@ -1,0 +1,9 @@
+dependencies:
+  cache_directories:
+    - /nix
+  pre:
+    - bash ./install-nix.sh
+
+test:
+  override:
+    - make test
