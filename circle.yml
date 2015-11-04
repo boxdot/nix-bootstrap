@@ -1,6 +1,6 @@
 dependencies:
   pre:
-    - bash ./install-nix.sh
+    - bash ./scripts/install-nix.sh
 
 test:
   override:
@@ -10,5 +10,4 @@ deployment:
   testing:
     branch: deployment
     commands:
-      - nix-copy-closure --to $DEPLOY_USER@$DEPLOY_HOST $(readlink result)
-      - ssh $DEPLOY_USER@$DEPLOY_HOST "nix-env -i $(readlink result)"
+      - bash ./scripts/deploy.sh $(readlink result)
