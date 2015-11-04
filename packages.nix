@@ -5,8 +5,8 @@ let
 in
 rec {
 
-  hi = import ./pkgs/hi {
-    inherit (pkgs) stdenv zlib llvmPackages_37 ;
-  };
+  # our packages
+
+  hi = pkgs.callPackage ./pkgs/hi { };
 
 }
