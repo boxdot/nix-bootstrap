@@ -1,19 +1,17 @@
-dependencies:
+machine:
   pre:
-    - bash ./scripts/install-nix.sh
-  override:
-    - make install-deps
+    - make -C $HOME/$CIRCLE_PROJECT_REPONAME configure-nix
+
+dependencies:
   cache_directories:
     - "/nix"
     - "~/.nix-defexpr"
     - "~/.nix-channels"
     - "~/.nix-profile"
-
-machine:
   pre:
-    - sudo mkdir -p -m 0755 /nix
-    - sudo chown $USER /nix
-    - echo ". $HOME/.nix-profile/etc/profile.d/nix.sh" >> ~/.bashrc
+    - make install-nix
+  override:
+    - make install-deps
 
 test:
   override:
@@ -23,4 +21,4 @@ deployment:
   testing:
     branch: deployment
     commands:
-      - bash ./scripts/deploy.sh $(readlink result)
+      - make deploy

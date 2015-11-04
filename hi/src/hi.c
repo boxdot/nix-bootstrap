@@ -5,5 +5,5 @@ int main() {
     printf("Hi, World!\n");
     printf("%s", zlibVersion());
     printf("\n");
-    return 1;
+    return 0;
 }
