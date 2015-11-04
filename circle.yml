@@ -1,8 +1,19 @@
 dependencies:
   pre:
     - bash ./scripts/install-nix.sh
+  override:
+    - make install-deps
   cache_directories:
-    - "~/nix-1.10-x86_64-linux"
+    - "/nix"
+    - "~/.nix-defexpr"
+    - "~/.nix-channels"
+    - "~/.nix-profile"
+
+machine:
+  pre:
+    - sudo mkdir -p -m 0755 /nix
+    - sudo chown $USER /nix
+    - echo ". $HOME/.nix-profile/etc/profile.d/nix.sh" >> ~/.bashrc
 
 test:
   override:
