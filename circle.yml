@@ -2,6 +2,9 @@ dependencies:
   pre:
     - bash ./install-nix.sh
 
+  cache_directories:
+    - "/nix"
+
 test:
   override:
     - make test
@@ -11,3 +14,4 @@ deployment:
     branch: deployment
     commands:
       - nix-copy-closure --to $DEPLOY_USER@$DEPLOY_HOST $(readlink result)
+      - ssh $DEPLOY_USER@$DEPLOY_HOST "nix-env -i $(readlink result)"
