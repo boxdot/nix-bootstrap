@@ -18,7 +18,7 @@ test:
     - make test
 
 deployment:
-  testing:
-    branch: deployment
+  production:
+    branch: master
     commands:
-      - make deploy
+      - make deploy  # Configuration of user/host is in Makefile
