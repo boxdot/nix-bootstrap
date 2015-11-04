@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/boxdot/nix-bootstrap.svg?style=svg)](https://circleci.com/gh/boxdot/nix-bootstrap)
+
 This is a minimal directory structure to maintain a private collection of nix packages. Packages are placed in the directory `pkgs`, and are declared in `packages.nix` file.
 
 To build the package `hi` run:
