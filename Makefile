@@ -25,9 +25,14 @@ configure-nix:
 
 install-nix:
 	# nix will be installed only if it was not restored from cache
-	if [ ! -e /nix -o ! "$$(ls -A /nix)" ]; then \
+	if [ ! -e /nix \
+			-o ! "$$(ls -A /nix)" \
+			-o ! -e ~/.nix-defexpr \
+	    	-o ! -e ~/.nix-channels \
+	    	-o ! -e ~/.nix-profile ]; \
+	then \
 		curl https://nixos.org/nix/install | sh; \
 	fi
 
 
-.PHONY: hi test install-deps configure-nix install-nix
+.PHONY: hi test deploy install-deps configure-nix install-nix
