@@ -7,3 +7,9 @@ dependencies:
 test:
   override:
     - make test
+
+deployment:
+  testing:
+    branch: deployment
+    commands:
+      - nix-copy-closure --to $DEPLOY_USER@$DEPLOY_HOST $(readlink result)
