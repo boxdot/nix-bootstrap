@@ -2,6 +2,9 @@
 hi:
 	nix-build -A $@
 
+hi-rs:
+	nix-build -A $@
+
 test: hi
 	# smoke test
 	result/bin/hi
@@ -35,4 +38,4 @@ install-nix:
 	fi
 
 
-.PHONY: hi test deploy install-deps configure-nix install-nix
+.PHONY: hi hi-rs test deploy install-deps configure-nix install-nix

@@ -1,7 +1,8 @@
 { stdenv }:
 
 stdenv.mkDerivation {
-  name = "libhi-0.0.1";
+  name = "libhi";
+  version = "0.1.0";
 
   src = ../../hi-lib;
   builder = ./builder.sh;
@@ -9,6 +10,6 @@ stdenv.mkDerivation {
   meta = {
     description = "A simple `Hi, World!` library.";
     homepage = http://example.com;
-    license = stdenv.lib.licenses.mit;
+    license = stdenv.lib.licenses.publicDomain;
   };
 }

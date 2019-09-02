@@ -1,3 +1,5 @@
+# nix-bootstrap
+
 This is a minimal directory structure to maintain a custom collection of nix packages. Packages are placed in the directory `pkgs`, and are declared in `overlay.nix` file.
 
 To build the package `hi` run:
@@ -9,3 +11,7 @@ To install `hi` run:
 ```
 nix-env -f default.nix -i hi
 ```
+
+## License
+
+The content of this repository is Public Domain.

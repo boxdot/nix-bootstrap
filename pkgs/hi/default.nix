@@ -1,7 +1,8 @@
 { stdenv, zlib, llvmPackages, hi-lib }:
 
 stdenv.mkDerivation {
-  name = "hi-0.0.1";
+  name = "hi";
+  version = "0.1.0";
 
   src = ../../hi;
   builder = ./builder.sh;
@@ -10,6 +11,6 @@ stdenv.mkDerivation {
   meta = {
     description = "A simple `Hi, World!` program.";
     homepage = http://example.com;
-    license = stdenv.lib.licenses.mit;
+    license = stdenv.lib.licenses.publicDomain;
   };
 }
