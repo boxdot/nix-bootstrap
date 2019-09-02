@@ -1,11 +1,11 @@
-{ stdenv, zlib, llvmPackages_37 }:
+{ stdenv, zlib, llvmPackages, hi-lib }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   name = "hi-0.0.1";
 
   src = ../../hi;
   builder = ./builder.sh;
-  buildInputs = [ zlib ] ++ (with llvmPackages_37; [ clang llvm ]);
+  buildInputs = [ zlib hi-lib ] ++ (with llvmPackages; [ clang llvm ]);
 
   meta = {
     description = "A simple `Hi, World!` program.";
