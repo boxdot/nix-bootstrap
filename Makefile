@@ -1,6 +1,6 @@
 
 hi:
-	nix-build packages.nix -A $@
+	nix-build -A $@
 
 test: hi
 	# smoke test
