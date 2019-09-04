@@ -8,6 +8,7 @@ with super;
   hi = callPackage ./pkgs/hi { };
 
   # Rust/Cargo example
+  libhi-rs = callPackage ./pkgs/libhi-rs { };
   hi-rs = callPackage ./pkgs/hi-rs { };
 
   # ccache config

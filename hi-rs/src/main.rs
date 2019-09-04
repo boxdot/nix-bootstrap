@@ -1,5 +1,5 @@
 use colored::Colorize;
 
 fn main() {
-    println!("{}", "Hi, world!".green());
+    println!("{}", libhi::hello().green());
 }

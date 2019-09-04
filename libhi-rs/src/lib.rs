@@ -1,3 +1,3 @@
 pub fn hello() -> String {
-    "Hi, World!".into()
+    "Hi, World! asd".into()
 }
